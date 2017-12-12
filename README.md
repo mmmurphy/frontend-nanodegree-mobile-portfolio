@@ -32,7 +32,7 @@ Profile, optimize, measure... and then lather, rinse, and repeat. Good luck!
 
 #### Part 2: Optimize Frames per Second in pizza.html
 
-To optimize views/pizza.html, you will need to modify views/js/main.js until your frames per second rate is 60 fps or higher. You will find instructive comments in main.js. 
+To optimize views/pizza.html, you will need to modify views/js/main.js until your frames per second rate is 60 fps or higher. You will find instructive comments in main.js.
 
 You might find the FPS Counter/HUD Display useful in Chrome developer tools described here: [Chrome Dev Tools tips-and-tricks](https://developer.chrome.com/devtools/docs/tips-and-tricks).
 
@@ -53,3 +53,38 @@ The portfolio was built on Twitter's <a href="http://getbootstrap.com/">Bootstra
 
 * <a href="http://getbootstrap.com/css/">Bootstrap's CSS Classes</a>
 * <a href="http://getbootstrap.com/components/">Bootstrap's Components</a>
+
+
+### What I Did to Optimize the performance
+
+The original performance using Google Canary Developer Tools was 73%.  Making the
+modifications outlined below, I am able to get the performance to 94%.  Performance
+after optimizations using PageSpeed, shows 93% for mobile and 95% for Desktop.
+
+There is room for further optimizations on the web server end that I am not amiable
+to make for this test due to not having full access to the web server configuration.
+
+#### index.html
+
+* used imagemagick to convert pizzeria.jpg and profilepic.jpg to the webp format
+* set rel="preload" attribute for page font
+* added media="print" for the print.css stylesheet
+* moved style.css to inline <style> element in
+* minimize code
+
+#### views/Pizza.HTML
+
+* moved style.css to inline <style> element in html
+* moved attribute css to <style> css
+* converted pizzeria.jpg into smaller sized .webp images in 200, 400, 800, and 1200 widths
+* used imagemagick to convert pizza.png to .webp format
+* added script to load stylesheet bootstrap-grid.css after the page is loaded.
+     found code sample at http://www.vidalquevedo.com/how-to-load-css-stylesheets-dynamically-with-jquery
+* minimize code
+
+
+#### views/js/main.js
+
+* use pizza.webp
+* line 529 - made loop max 20 for number of pizzas
+* minimize code
