@@ -57,9 +57,11 @@ The portfolio was built on Twitter's <a href="http://getbootstrap.com/">Bootstra
 
 ### What I Did to Optimize the performance
 
-The original performance using Google Canary Developer Tools was 73%.  Making the
-modifications outlined below, I am able to get the performance to 94%.  Performance
-after optimizations using PageSpeed, shows 93% for mobile and 95% for Desktop.
+_Specific modifications are outlined below_
+
+Using Google PageSpeed, performance after optimization on for the index.html,
+shows 90%/94% for mobile/desktop respectively.  Performance on the views/pizza.html
+was optimized to 92%/94%.
 
 There is room for further optimizations on the web server end that I am not amiable
 to make for this test due to not having full access to the web server configuration.
@@ -67,17 +69,21 @@ to make for this test due to not having full access to the web server configurat
 #### index.html
 
 * used imagemagick to convert pizzeria.jpg and profilepic.jpg to the webp format
-* set rel="preload" attribute for page font
+* removed style and size properties from the pizzeria-100.webp img link
+* recoded google fonts to use the googleapis font loader
 * added media="print" for the print.css stylesheet
-* moved style.css to inline <style> element in
+* moved style.css to inline "style" element
+* moved remote images to local server and converted to .webp format
 * minimize code
 
 #### views/Pizza.HTML
 
-* moved style.css to inline <style> element in html
-* moved attribute css to <style> css
+* moved style.css to inline "style" element in html
+* moved attribute css to "style" css
+* added translateZ(0) property to .mover so GPU is used for rendering
 * converted pizzeria.jpg into smaller sized .webp images in 200, 400, 800, and 1200 widths
 * used imagemagick to convert pizza.png to .webp format
+* added script to load jquery so error would not occur on $(document) reference
 * added script to load stylesheet bootstrap-grid.css after the page is loaded.
      found code sample at http://www.vidalquevedo.com/how-to-load-css-stylesheets-dynamically-with-jquery
 * minimize code
@@ -87,4 +93,15 @@ to make for this test due to not having full access to the web server configurat
 
 * use pizza.webp
 * line 529 - made loop max 20 for number of pizzas
+* changed document.querySelector to document.getElementById
+* modified changePizzaSizes function
+     - variables are outside for loop
+     - tempContainer is used to reference document.getElementByID
+* modified updatePositions functions
+     - move scrollTop variable definition outside for intLoopEnd
+     - created variable for loop end and used it in for loop definition
+     - variable phase is instantiated in the for loop definition
+* referenced getElementByID('movingPizzas1') with container movingPizzas1
+* pizzasDiv instantiated outside for loop
+* moved for loop variables to be instatiated at loop definition
 * minimize code
