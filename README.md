@@ -72,7 +72,7 @@ to make for this test due to not having full access to the web server configurat
 * removed style and size properties from the pizzeria-100.webp img link
 * recoded google fonts to use the googleapis font loader
 * added media="print" for the print.css stylesheet
-* moved style.css to inline "style" element
+* moved ATF statements from style.css to inline HTML "style" element
 * moved remote images to local server and converted to .webp format
 * minimize code
 
@@ -80,6 +80,7 @@ to make for this test due to not having full access to the web server configurat
 
 * moved style.css to inline "style" element in html
 * moved attribute css to "style" css
+* removed -webkit and -moz css and used standard css box-sizing
 * added translateZ(0) property to .mover so GPU is used for rendering
 * converted pizzeria.jpg into smaller sized .webp images in 200, 400, 800, and 1200 widths
 * used imagemagick to convert pizza.png to .webp format
@@ -105,3 +106,7 @@ to make for this test due to not having full access to the web server configurat
 * pizzasDiv instantiated outside for loop
 * moved for loop variables to be instatiated at loop definition
 * minimize code
+
+#### views/css/bootstrap-grid.CSS
+
+* moved media statements to the pizza.html file
