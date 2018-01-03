@@ -85,8 +85,6 @@ to make for this test due to not having full access to the web server configurat
 * converted pizzeria.jpg into smaller sized .webp images in 200, 400, 800, and 1200 widths
 * used imagemagick to convert pizza.png to .webp format
 * added script to load jquery so error would not occur on $(document) reference
-* added script to load stylesheet bootstrap-grid.css after the page is loaded.
-     found code sample at http://www.vidalquevedo.com/how-to-load-css-stylesheets-dynamically-with-jquery
 * minimize code
 
 
